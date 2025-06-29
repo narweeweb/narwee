@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Let's Narwee Together</title>
+  <link rel="stylesheet" href="narwee.css" />
+      <style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
+
+    body {
+  font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="left-panel">
+      <div class="logo-box">
+        <div class="ctrl">
+        <h6></h6>
+        </div>
+        <div class="bg-ctrl"></div>
+        <div class="logo">
+          <img src="logo.jpg">
+        </div>
+      </div>
+      <button class="info-btn"><a href="IAbout.html">What's an Investor in Narwee?</button></a>
+    </div>
+    <div class="right-panel">
+      <div class="form-box">
+        <h2>Create a New Investor Account</h2>
+         <h3>Join Narwee Today</h3>
+         <div class="form-row">
+  <input type="text" placeholder="First Name">
+  <input type="text" placeholder="Last Name">
+</div>
+        <form>
+           <input type="email" placeholder="Email" required />
+          <input type="tel" placeholder="Phone Number" required />
+          <input type="password" placeholder="Password" required />
+          <button type="submit" id="subBtn" class="submit-btn"><a href="Ipage.html">Sign Up</button></a>
+        </form>
+        <p class="login-link" id="nextBtn">Already have an account? <a href="Ilog.html">Log In</a></p>
+      </div>
+    </div>
+  </div>
+  </body>
+  <script>
+document.getElementById('subBtn').addEventListener('click', function() {
+  window.location.href = 'Ipage.html';
+});
+</script>
+  </html>

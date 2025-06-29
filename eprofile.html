@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Let's Narwee Together</title>
+  <link rel="stylesheet" href="narwee.css" />
+  <div class="b-header">
+    <h1>Edit Profile</h1>
+  </div>
+  <div class="hp-con">
+    <img src="header.jpg">
+  </div>
+  <nav>
+    <a href="Bpage.html">
+      <div class="bu-logo">
+        <img src="logo.jpg">
+      </div>
+    </a>
+  </nav>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700&display=swap');
+
+    body {
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+    }
+  </style>
+</head>
+<div class="nav">
+  <nav class="navbar">
+    <ul class="nav-links">
+      <div class="nav-links-business">
+        <li class="home-bus-btn"><a class="home-busin-btn" href="home.html">Home</a></li>
+        <li class="about-bus-btn"><a class="about-busin-btn" href="BAbout.html">About</a></li>
+        <li class="contact-bus-btn"><a class="con-bus-btn" href="contact.html">Contact</a></li>
+        <div class="dropdown">
+          <li class="user-bus-btn"><a class="user-busin-btn" class="dropbtn">User</a></li>
+          <div class="dropdown-content">
+            <a class="ecom-sp-btn">Edit</a>
+            <a href="Bpage.html">View</a>
+          </div>
+        </div>
+      </div>
+    </ul>
+  </nav>
+</div>
+<body>
+  <h2 class="edit-p">Edit Profile Picture</h2>
+  <div class="eb-box1">
+    <input type="file" id="profilePicUpload" accept="image/*" style="display:none;">
+    <label for="profilePicUpload" class="upload-bc" style="cursor:pointer;">Upload Profile Picture</label>
+  </div>
+
+  <br><br><br><br><br><br><br><br><br><br><br><br>
+
+  <h2 class="upload-bc">Upload Business Concept</h2>
+  <div class="upload-container">
+    <input type="file" id="conceptUpload" accept=".txt" style="display:none" />
+    <label for="conceptUpload" class="upload-bc" style="cursor:pointer;">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.3" stroke="currentColor" class="upload-icon" width="48" height="48">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9 8.25H7.5a2.25 2.25 0 0 0-2.25 2.25v9a2.25 2.25 0 0 0 2.25 2.25h9a2.25 2.25 0 0 0 2.25-2.25v-9a2.25 2.25 0 0 0-2.25-2.25H15m0-3-3-3m0 0-3 3m3-3V15" />
+      </svg>
+    </label>
+    <button class="concept-btn" onclick="saveConcept()">Save Business Concept</button>
+  </div>
+  <div id="uploadMessage" style="margin-top:10px; font-weight:700;"></div>
+
+  <h2 class="edit-des">Edit Description</h2>
+  <div class="des-bu2">
+    <textarea id="businessDescription" rows="5" placeholder="Write your business description here..." style="width:100%; max-width:600px;"></textarea>
+  </div>
+  <div class="des-bu3"></div>
+
+  <button type="submit" class="save-btn" id="nextBtn"><a href="Bpage.html">Save Changes</a></button>
+
+  <script>
+    function saveConcept() {
+      const fileInput = document.getElementById('conceptUpload');
+      const messageDiv = document.getElementById('uploadMessage');
+
+      if (!fileInput.files.length) {
+        messageDiv.textContent = '⚠️ Please select a file to upload.';
+        return;
+      }
+
+      const file = fileInput.files[0];
+      const reader = new FileReader();
+
+      reader.onload = function(event) {
+        localStorage.setItem('businessConceptFileName', file.name);
+        localStorage.setItem('businessConceptFileData', event.target.result);
+
+        const responses = [
+          `📊 <em>Your concept demonstrates potential but lacks clarity in execution strategy.</em><br><br>
+          🧠 <strong>Feedback:</strong><br>
+          - Clarify your core value proposition.<br>
+          - Add specific market size data.<br>
+          - Increase your LinkedIn activity.<br><br>
+          🔄 Please refine your concept for a stronger score.`,
+          `📉 <em>Your idea has a solid base but needs better financial forecasting.</em><br><br>
+          🧠 <strong>Recommendations:</strong><br>
+          - Add revenue projections.<br>
+          - Expand your customer acquisition strategy.<br><br>
+          💡 Clear growth plans attract investors.`,
+          `📈 <em>The concept is innovative but lacks a go-to-market plan.</em><br><br>
+          🧠 <strong>Suggestions:</strong><br>
+          - Define your launch strategy.<br>
+          - Engage more on Twitter.<br>
+          - Highlight competitive advantages.<br><br>
+          🚀 Strong ideas need strong positioning.`
+        ];
+        const score = Math.floor(Math.random() * 41) + 60;
+        const feedback = responses[Math.floor(Math.random() * responses.length)];
+
+        localStorage.setItem('aiScore', score);
+        localStorage.setItem('aiFeedback', feedback);
+        localStorage.setItem('conceptUploaded', 'true');
+
+        messageDiv.innerHTML = `✅ "${file.name}" saved.<br>💡 AI Feedback and Score ready!`;
+      };
+
+      reader.readAsDataURL(file);
+    }
+
+    // Save profile data on button click
+    document.getElementById('nextBtn').addEventListener('click', function(e) {
+      e.preventDefault();
+
+      const description = document.getElementById('businessDescription').value;
+      localStorage.setItem('businessDescription', description);
+
+      const fileInput = document.getElementById('profilePicUpload');
+      if (fileInput.files.length > 0) {
+        const reader = new FileReader();
+        reader.onload = function(event) {
+          localStorage.setItem('profilePicture', event.target.result);
+          window.location.href = 'Bpage.html';
+        };
+        reader.readAsDataURL(fileInput.files[0]);
+      } else {
+        window.location.href = 'Bpage.html';
+      }
+    });
+
+    // Load saved data
+
+  </script>
+</body>
+</html>

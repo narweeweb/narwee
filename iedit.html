@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Edit Investor Profile</title>
+  <link rel="stylesheet" href="narwee.css" />
+  <div class="b-header">
+    <h1>Edit Investor Profile</h1>
+  </div>
+  <div class="hp-con">
+    <img src="header.jpg" alt="Header Image">
+  </div>
+  <nav>
+    <a href="Ipage.html">
+      <div class="bu-logo">
+        <img src="logo.jpg" alt="Logo">
+      </div>
+    </a>
+  </nav>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700&display=swap');
+    body {
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+    }
+  </style>
+</head>
+
+<div class="nav">
+  <nav class="navbar">
+    <ul class="nav-links">
+      <div class="nav-links-business">
+        <li class="home-bus-btn"><a class="home-busin-btn" href="home.html">Home</a></li>
+        <li class="about-bus-btn"><a class="about-busin-btn" href="IAbout.html">About</a></li>
+        <li class="contact-bus-btn"><a class="con-bus-btn" href="contact.html">Contact</a></li>
+        <div class="dropdown">
+          <li class="user-bus-btn"><a class="user-busin-btn">User</a></li>
+          <div class="dropdown-content">
+            <a href="iedit.html">Edit</a>
+            <a href="Ipage.html">View</a>
+          </div>
+        </div>
+      </div>
+    </ul>
+  </nav>
+</div>
+
+<body>
+  <h2 class="edit-p">Edit Profile Picture</h2>
+  <div class="eb-box1">
+    <input type="file" id="profilePicUpload" accept="image/*" style="display:none;" />
+    <label for="profilePicUpload" class="upload-bc" style="cursor:pointer;">Upload Profile Picture</label>
+  </div>
+
+  <br><br>
+
+  <h2 class="edit-name-p">Edit Name</h2>
+  <input type="text" class="form-name-ent" id="investorNameInput" placeholder="Enter your name" style="font-weight:700; font-size:1.2rem; padding:8px; width:100%; max-width:400px;"/>
+  <br><br>
+
+  <button type="button" class="save-i-btn" id="saveBtn">Save Changes</button>
+
+  <script>
+    // Load saved data on page load (no preview anymore)
+    window.onload = () => {
+      const savedName = localStorage.getItem('investorName');
+      if (savedName) {
+        document.getElementById('investorNameInput').value = savedName;
+      }
+    };
+
+    // Save profile picture to localStorage when uploaded
+    document.getElementById('profilePicUpload').addEventListener('change', function () {
+      const file = this.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = () => {
+        localStorage.setItem('investorProfilePicture', reader.result);
+        alert('Profile picture uploaded! Click Save Changes to save.');
+      };
+      reader.readAsDataURL(file);
+    });
+
+    // Save name and redirect on save button click
+    document.getElementById('saveBtn').addEventListener('click', () => {
+      const name = document.getElementById('investorNameInput').value.trim();
+      if (name === '') {
+        alert('Please enter your name before saving.');
+        return;
+      }
+      localStorage.setItem('investorName', name);
+      alert('Profile saved! Redirecting to your profile page...');
+      window.location.href = 'Ipage.html';
+    });
+  </script>
+</body>
+</html>
