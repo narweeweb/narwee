@@ -237,11 +237,19 @@ color:#C1FD72;
 .c-header {
   display: flex;
   font-size: 18px;
-  font-weight:600;
-  margin-top:100px;
- float:left;
-  margin-left: -730px;
+  font-weight: 600;
+  margin-top: 100px;
+  justify-content: flex-start; 
 }
+
+.c-header2 {
+  display: flex;
+  font-size: 18px;
+  font-weight: 600;
+  margin-top: 10px;
+  justify-content: flex-start;
+}
+
 .c-touch{
     background-color:#11201d;
   border-radius: 20px;
@@ -251,14 +259,6 @@ color:#C1FD72;
   padding-left: 10px;  
 text-align: center;
   color:#C1FD72;
-}
-.c-header2 {
-  display: flex;
-  font-size: 18px;
-  font-weight:600;
-  margin-top:40px;
- float:right;
- margin-right: 20px;
 }
 .c-us{
     background-color:#11201d;
@@ -1928,4 +1928,5 @@ padding-left: 20px;
   display: flex;
   align-items: center; /* vertically centers items */
   gap: 10px; /* space between icon and button */
+
 }
