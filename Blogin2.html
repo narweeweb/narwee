@@ -51,19 +51,22 @@
 
 <script>
 document.getElementById('investor-signup-form').addEventListener('submit', function(event) {
-  event.preventDefault(); // prevent normal form submission
+  event.preventDefault(); // prevent default form submission
 
+  // Collect values from existing inputs
   const firstName = document.getElementById('firstName').value.trim();
   const lastName = document.getElementById('lastName').value.trim();
   const email = document.getElementById('email').value.trim();
   const phone = document.getElementById('phone').value.trim();
   const password = document.getElementById('password').value.trim();
 
+  // Make sure all fields are filled
   if (!firstName || !lastName || !email || !phone || !password) {
     alert('Please fill in all required fields.');
     return;
   }
 
+  // Save inputs locally
   localStorage.setItem('firstName', firstName);
   localStorage.setItem('lastName', lastName);
   localStorage.setItem('email', email);
@@ -74,6 +77,3 @@ document.getElementById('investor-signup-form').addEventListener('submit', funct
   window.location.href = 'Bpage.html';
 });
 </script>
-
-
-
