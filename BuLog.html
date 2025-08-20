@@ -1,1 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome Back</title>
+  <link rel="stylesheet" href="narwee.css" />
+      <style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
 
+    body {
+  font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="left-panel">
+      <div class="logo-box">
+        <div class="ctrl">
+        <h6></h6>
+        </div>
+        <div class="bg-ctrl"></div>
+        <div class="logo">
+          <img src="logo.jpg">
+        </div>
+      </div>
+      <button class="info-btn"><a href="BAbout.html">What's a business in Narwee?</button></a>
+    </div>
+    <div class="right-panel">
+      <div class="form-box">
+        <h2>Welcome Back</h2>
+        <br>
+         <h3>Log In To Narwee</h3>
+       <form id="business-login-form">
+  <input type="email" placeholder="Email" required />
+  <input type="password" placeholder="Password" required />
+  <button type="submit" class="submit-btn">Log In</button>
+</form>
+
+<p class="login-link">Don't have an account? <a href="Blogin.html">Sign Up</a></p>
+
+<script>
+document.getElementById('business-login-form').addEventListener('submit', function(e) {
+  e.preventDefault(); // prevent default form submission
+
+  const email = this.querySelector('input[type="email"]').value.trim();
+  const password = this.querySelector('input[type="password"]').value.trim();
+
+  if (!email || !password) {
+    alert('Please fill in all fields.');
+    return;
+  }
+
+  // Optional: store info locally
+  localStorage.setItem('businessEmail', email);
+  localStorage.setItem('businessPassword', password);
+
+  // Navigate to next page
+  window.location.href = 'Bpage.html';
+});
+</script>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
