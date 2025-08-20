@@ -33,14 +33,33 @@
         <h2>Welcome Back</h2>
         <br>
          <h3>Log In To Narwee</h3>
-        <form>
-          <input type="email" placeholder="Email" required />
-          <input type="password" placeholder="Password" required />
-          <button type="submit" class="submit-btn"><a href="Ipage.html">Log In</button></a>
-        </form>
-        <p class="login-link">Don't have an account? <a href="Ilogin.html">Sign Up</a></p>
-      </div>
-    </div>
-  </div>
+        <form id="investor-login-form">
+  <input type="email" placeholder="Email" required />
+  <input type="password" placeholder="Password" required />
+  <button type="submit" class="submit-btn">Log In</button>
+</form>
+
+<p class="login-link">Don't have an account? <a href="Ilogin.html">Sign Up</a></p>
+
+<script>
+const investorLoginForm = document.getElementById('investor-login-form');
+
+investorLoginForm.addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  const email = investorLoginForm.querySelector('input[type="email"]').value.trim();
+  const password = investorLoginForm.querySelector('input[type="password"]').value.trim();
+
+  // Save credentials locally for testing (optional)
+  localStorage.setItem('investorEmail', email);
+  localStorage.setItem('investorPassword', password);
+
+  // Navigate to investor page
+  window.location.href = 'Ipage.html';
+});
+</script>
+</div>
+</div>
+</div>
 </body>
 </html>
