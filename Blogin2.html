@@ -29,41 +29,43 @@
       <button class="info-btn"><a href="BAbout.html">What's a business in Narwee?</a></button>
     </div>
     <div class="right-panel">
-      <div class="form-box">
-        <h2>Create a New Business Account</h2>
-        <h3>Join Narwee Today</h3>
-        <form id="registrationForm">
-          <h4 class="h-text">CPR Photo</h4>
-          <label for="profile-picture" class="upload-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.3" stroke="currentColor" class="upload-icon">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9 8.25H7.5a2.25 2.25 0 0 0-2.25 2.25v9a2.25 2.25 0 0 0 2.25 2.25h9a2.25 2.25 0 0 0 2.25-2.25v-9a2.25 2.25 0 0 0-2.25-2.25H15m0-3-3-3m0 0-3 3m3-3V15" />
-            </svg>
-          </label>
-          <input type="file" id="profile-picture" name="profile-picture" accept="image/*" hidden>
-          <input type="text" id="businessName" placeholder="Business Name" required />
-          <input type="tel" placeholder="CR Code" required />
-          <button type="submit" class="submit-btn" id="nextBtn">Sign Up</button>
-        </form>
-        <p class="login-link">Already have an account? <a href="Blogin.html">Log In</a></p>
-      </div>
+     <div class="form-box">
+  <h2>Create a New Investor Account</h2>
+  <h3>Join Narwee Today</h3>
+
+  <form id="investor-signup-form">
+    <div class="form-row">
+      <input type="text" id="firstName" placeholder="First Name" required>
+      <input type="text" id="lastName" placeholder="Last Name" required>
     </div>
-  </div>
+    <input type="email" id="email" placeholder="Email" required>
+    <input type="tel" id="phone" placeholder="Phone Number" required>
+    <input type="password" id="password" placeholder="Password" required>
+    <button type="submit" class="submit-btn">Sign Up</button>
+  </form>
 
-  <script>
-    document.getElementById('registrationForm').addEventListener('submit', function(event) {
-      event.preventDefault(); // prevent normal form submission
+  <!-- Move this OUTSIDE the form and any flex rows -->
+  <p class="login-link">Already have an account? <a href="Ilog.html">Log In</a></p>
+</div>
 
-      const businessName = document.getElementById('businessName').value.trim();
 
-      if (!businessName) {
-        alert('Please enter your business name.');
-        return;
-      }
+<script>
+document.getElementById('registrationForm').addEventListener('submit', function(event) {
+  event.preventDefault(); // prevent normal form submission
 
-      localStorage.setItem('businessName', businessName);
+  const businessName = document.getElementById('businessName').value.trim();
+  const crCode = document.getElementById('crCode').value.trim();
 
-      window.location.href = 'Bpage.html';
-    });
-  </script>
-</body>
-</html>
+  if (!businessName || !crCode) {
+    alert('Please fill in all required fields.');
+    return;
+  }
+
+  // Save inputs locally
+  localStorage.setItem('businessName', businessName);
+  localStorage.setItem('crCode', crCode);
+
+  // Navigate to next page
+  window.location.href = 'Bpage.html';
+});
+</script>
