@@ -50,24 +50,30 @@
 
 
 <script>
-document.getElementById('registrationForm').addEventListener('submit', function(event) {
+document.getElementById('investor-signup-form').addEventListener('submit', function(event) {
   event.preventDefault(); // prevent normal form submission
 
-  const businessName = document.getElementById('businessName').value.trim();
-  const crCode = document.getElementById('crCode').value.trim();
+  const firstName = document.getElementById('firstName').value.trim();
+  const lastName = document.getElementById('lastName').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const phone = document.getElementById('phone').value.trim();
+  const password = document.getElementById('password').value.trim();
 
-  if (!businessName || !crCode) {
+  if (!firstName || !lastName || !email || !phone || !password) {
     alert('Please fill in all required fields.');
     return;
   }
 
-  // Save inputs locally
-  localStorage.setItem('businessName', businessName);
-  localStorage.setItem('crCode', crCode);
+  localStorage.setItem('firstName', firstName);
+  localStorage.setItem('lastName', lastName);
+  localStorage.setItem('email', email);
+  localStorage.setItem('phone', phone);
+  localStorage.setItem('password', password);
 
   // Navigate to next page
   window.location.href = 'Bpage.html';
 });
 </script>
+
 
 
