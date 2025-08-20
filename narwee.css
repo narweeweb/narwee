@@ -236,16 +236,15 @@ color:#C1FD72;
 /*end home & contact btn contact page css*/
 .c-headers-container {
   display: flex;
-  justify-content: space-between; /* left-right alignment */
-  align-items: center;            /* vertical centering */
-  width: 100%;
-  margin-top: 100px;              /* keep your spacing */
+  justify-content: center; /* centers the two headers horizontally */
+  gap: 40px; /* space between the headers */
+  margin-top: 100px; /* spacing from the top of the page */
 }
 
-.c-header, .c-header2 {
-  float: none;       /* remove old float */
-  margin: 0;         /* remove old negative margins */
+.c-touch, .c-us {
+  margin: 0; /* remove default h1 margins */
 }
+
 
 .c-touch{
     background-color:#11201d;
@@ -1927,5 +1926,6 @@ padding-left: 20px;
   gap: 10px; /* space between icon and button */
 
 }
+
 
 
