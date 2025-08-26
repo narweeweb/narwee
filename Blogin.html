@@ -35,29 +35,22 @@
     </div>
   </div>
 
-  <script>
-    const loginForm = document.getElementById('login-form');
-    const loginError = document.getElementById('login-error');
+<script>
+  const loginForm = document.getElementById('login-form');
 
-    loginForm.addEventListener('submit', function(e) {
-      e.preventDefault();
+  loginForm.addEventListener('submit', function(e) {
+    e.preventDefault();
 
-      const businessName = document.getElementById('loginBusinessName').value.trim();
-      const crCode = document.getElementById('loginCrCode').value.trim();
+    const businessName = document.getElementById('loginBusinessName').value.trim();
 
-      const storedBusinessName = localStorage.getItem('businessName');
-      const storedCrCode = localStorage.getItem('crCode');
+    localStorage.setItem('businessName', businessName);
 
-      if (businessName === storedBusinessName && crCode === storedCrCode) {
-        // Login successful
-        window.location.href = 'Bpage.html';
-      } else {
-        // Show error
-        loginError.style.display = 'block';
-      }
-    });
-  </script>
+    window.location.href = 'Bpage.html';
+  });
+</script>
+
 </body>
 </html>
+
 
 
